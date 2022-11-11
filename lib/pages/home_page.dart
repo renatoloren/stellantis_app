@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stellantis_app/pages/menu_page.dart';
+import 'package:stellantis_app/pages/posto_list_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,24 +25,34 @@ class _HomePageState extends State<HomePage> {
       body: PageView(
         controller: pc,
         onPageChanged: setPaginaAtual,
-        children: const [
-          //lista de páginas
-        ],
+        children: const [MenuPage(), PostoListPage()],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: paginaAtual,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.grey[100],
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.pie_chart,
+              Icons.home,
             ),
-            label: 'Dashboard',
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.battery_charging_full_outlined,
+            ),
+            label: 'Postos',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.credit_card,
+            ),
+            label: 'Cartões',
           )
         ],
-        fixedColor: const Color.fromRGBO(60, 255, 178, 1),
-        unselectedItemColor: Colors.white,
+        fixedColor: Colors.red[400],
+        unselectedItemColor: Colors.black,
         onTap: (pagina) {
           pc.animateToPage(
             pagina,
